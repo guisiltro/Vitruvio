@@ -1,0 +1,523 @@
+<!doctype html>
+<html lang="pt-BR" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#fdfaf3" />
+    <title>Premium · VITRUVIANO</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="../firebase/auth.css" />
+    <link rel="stylesheet" href="premium.css" />
+    <link rel="stylesheet" href="tokens-ui.css" />
+  </head>
+  <body class="page-premium">
+    <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+    <!-- Badge flutuante de tokens -->
+    <div class="token-badge" id="tokenBadge" data-auth-only>
+      <span class="token-badge__icon">◆</span>
+      <div class="token-badge__info">
+        <small id="tokenPlanLabel">Plano Standart</small>
+        <strong id="tokenCounter">3 de 3 usos</strong>
+      </div>
+    </div>
+
+    <header class="site-header">
+      <a class="brand" href="../index.html">
+        <img src="../img/logo.png" alt="" width="42" height="42" />
+        <span>VITRUVIANO</span>
+      </a>
+      <nav class="site-nav" id="site-nav">
+        <a href="../projetos/index.html">Projetos</a>
+        <a href="../ia/index.html">Memorial IA</a>
+        <a href="index.html" class="is-current">Planos</a>
+        <a href="../blog/index.html">Comunidade</a>
+      </nav>
+      <div class="nav-actions">
+        <button class="theme-toggle" type="button" aria-label="Alternar tema">
+          <svg viewBox="0 0 24 24" width="17" height="17"><circle cx="12" cy="12" r="4" fill="currentColor"/><g stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></g></svg>
+        </button>
+        <div class="auth-user" id="authContainer"></div>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-label="Abrir menu">
+          <span></span><span></span>
+        </button>
+      </div>
+    </header>
+
+    <div class="welcome-bar" data-auth-only>
+      <div class="welcome-bar__avatar" data-user-avatar-fallback>?</div>
+      <div class="welcome-bar__info">
+        <strong data-user-welcome>Bem-vindo.</strong>
+        <small>Seu plano: <span data-user-plan>Plano Standart</span></small>
+      </div>
+      <a class="welcome-bar__link" href="../perfil/index.html">
+        Ver minha assinatura
+        <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+
+    <main id="conteudo">
+      <section class="pr-hero">
+        <div class="pr-hero__grid"></div>
+        <div class="pr-hero__glow"></div>
+        <div class="pr-hero__inner">
+          <div class="pr-hero__badge">
+            <span class="pr-hero__dot"></span>
+            Plano gratuito disponível · sem cartão
+          </div>
+          <h1>Menos planilha.<br />Mais <em>arquitetura.</em></h1>
+          <p class="pr-hero__lead">
+            Memorial com IA, planejamento completo, portal do cliente e propostas
+            comerciais — tudo em um lugar. Feito por arquitetos, para arquitetos brasileiros.
+          </p>
+          <div class="pr-hero__actions">
+            <a class="btn btn--primary" href="#planos">Ver planos</a>
+            <a class="btn btn--ghost" href="#planner">Abrir planejamento</a>
+          </div>
+          <div class="pr-hero__stats">
+            <div><strong>+2.400</strong><span>arquitetos</span></div>
+            <div><strong>18k</strong><span>memoriais</span></div>
+            <div><strong>4.9/5</strong><span>satisfação</span></div>
+            <div><strong>97%</strong><span>renovam</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="pr-plans" id="planos">
+        <div class="pr-section">
+          <div class="pr-section__head pr-section__head--center">
+            <p class="pr-kicker">Planos e preços</p>
+            <h2>Escolha o tamanho do seu <em>estúdio.</em></h2>
+            <p class="pr-section__sub">Comece grátis. Cancele quando quiser. Sem fidelidade.</p>
+          </div>
+
+          <div class="pr-toggle" role="group">
+            <button class="pr-toggle__btn is-active" type="button" data-cycle="mensal">Mensal</button>
+            <button class="pr-toggle__btn" type="button" data-cycle="anual">Anual <span class="pr-toggle__badge">−20%</span></button>
+          </div>
+
+          <div class="pr-plans__grid">
+            <article class="plan" data-plan="Standart" data-plan-name="Standart">
+              <header>
+                <p class="plan__tag">Standart</p>
+                <h3>
+                  <span class="plan__currency">R$</span>
+                  <span class="plan__price" data-mensal="0" data-anual="0">0</span>
+                  <span class="plan__cycle">/mês</span>
+                </h3>
+                <p class="plan__desc">Pra começar a explorar o VITRUVIANO.</p>
+              </header>
+              <div class="plan__tokens">
+                <span>◆</span> 3 usos por mês
+              </div>
+              <ul class="plan__features">
+                <li>5 projetos ativos</li>
+                <li>20 memoriais com IA / mês</li>
+                <li>Biblioteca completa</li>
+                <li>Comunidade aberta</li>
+              </ul>
+              <a class="btn btn--ghost plan__cta" href="../assinar/index.html" style="display:block;text-align:center;text-decoration:none;">Começar grátis</a>
+            </article>
+
+            <article class="plan plan--featured" data-plan="Médio" data-plan-name="Médio">
+              <span class="plan__ribbon">Recomendado</span>
+              <header>
+                <p class="plan__tag">Médio</p>
+                <h3>
+                  <span class="plan__currency">R$</span>
+                  <span class="plan__price" data-mensal="19" data-anual="15">19</span>
+                  <span class="plan__cycle">/mês</span>
+                </h3>
+                <p class="plan__desc">Pra profissionais com volume recorrente.</p>
+              </header>
+              <div class="plan__tokens plan__tokens--featured">
+                <span>◆</span> 50 usos por mês
+              </div>
+              <ul class="plan__features">
+                <li>Tudo do Standart, mais:</li>
+                <li>Planejamento IA completo</li>
+                <li>25 projetos ativos</li>
+                <li>100 memoriais com IA / mês</li>
+                <li>Propostas comerciais</li>
+                <li>Cronograma automático</li>
+              </ul>
+              <a class="btn btn--primary plan__cta" href="../assinar/index.html" style="display:block;text-align:center;text-decoration:none;">Assinar Médio</a>
+            </article>
+
+            <article class="plan" data-plan="Escritório" data-plan-name="Escritório">
+              <header>
+                <p class="plan__tag">Escritório</p>
+                <h3>
+                  <span class="plan__currency">R$</span>
+                  <span class="plan__price" data-mensal="59" data-anual="47">59</span>
+                  <span class="plan__cycle">/mês</span>
+                </h3>
+                <p class="plan__desc">Pra escritórios consolidados.</p>
+              </header>
+              <div class="plan__tokens">
+                <span>◆</span> Uso ilimitado
+              </div>
+              <ul class="plan__features">
+                <li>Tudo do Médio, mais:</li>
+                <li>Projetos ilimitados</li>
+                <li>Memoriais ilimitados</li>
+                <li>Multi-usuário</li>
+                <li>API + SSO</li>
+                <li>Gerente de conta</li>
+              </ul>
+              <a class="btn btn--ghost plan__cta" href="../assinar/index.html" style="display:block;text-align:center;text-decoration:none;">Assinar Escritório</a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="pr-calc-section" id="planner">
+        <div class="pr-section">
+          <div class="pr-section__head">
+            <p class="pr-kicker">Ferramenta IA · Planejamento completo</p>
+            <h2>Planeje cada <em>etapa.</em></h2>
+            <p class="pr-section__sub">Ajuste os dados uma vez e veja custo, cronograma, materiais, mão de obra, energia, financiamento e sustentabilidade se recalcularem juntos.</p>
+          </div>
+
+          <div class="planner" style="position:relative;">
+
+            <!-- GATE do planner (bloqueio Standart ou sem tokens) -->
+            <div class="planner-gate" id="plannerGate" hidden>
+              <div class="planner-gate__card" id="gateCard"></div>
+            </div>
+
+            <div class="planner__base">
+              <div class="planner__base-head">
+                <span class="planner__base-icon">⚙</span>
+                <div>
+                  <strong>Dados do projeto</strong>
+                  <small>Ajuste aqui — todos os painéis usam esses valores</small>
+                </div>
+              </div>
+              <div class="planner__base-grid">
+                <label class="calc__field"><span>Estado</span>
+                  <select id="plState">
+                    <option value="sp">São Paulo</option>
+                    <option value="rj">Rio de Janeiro</option>
+                    <option value="mg">Minas Gerais</option>
+                    <option value="pr">Paraná</option>
+                    <option value="sc">Santa Catarina</option>
+                    <option value="rs">Rio Grande do Sul</option>
+                    <option value="ba">Bahia</option>
+                    <option value="pe">Pernambuco</option>
+                    <option value="ce">Ceará</option>
+                    <option value="df">Distrito Federal</option>
+                  </select>
+                </label>
+                <label class="calc__field"><span>Padrão</span>
+                  <select id="plPadrao">
+                    <option value="popular">Popular</option>
+                    <option value="medio" selected>Médio</option>
+                    <option value="alto">Alto</option>
+                  </select>
+                </label>
+                <label class="calc__field"><span>Tipo</span>
+                  <select id="plTipo">
+                    <option value="nova" selected>Construção nova</option>
+                    <option value="reforma">Reforma</option>
+                    <option value="ampliacao">Ampliação</option>
+                  </select>
+                </label>
+                <label class="calc__field"><span>Área (m²)</span>
+                  <input type="number" id="plArea" value="180" min="30" max="2000" />
+                </label>
+                <label class="calc__field"><span>Pavimentos</span>
+                  <input type="number" id="plPav" value="1" min="1" max="10" />
+                </label>
+                <label class="calc__field"><span>Quartos</span>
+                  <input type="number" id="plQuartos" value="3" min="1" max="10" />
+                </label>
+              </div>
+            </div>
+
+            <div class="planner__tabs" role="tablist">
+              <button class="pl-tab is-active" data-tab="custo" type="button"><span>💰</span> Custo</button>
+              <button class="pl-tab" data-tab="cronograma" type="button"><span>📅</span> Cronograma</button>
+              <button class="pl-tab" data-tab="materiais" type="button"><span>🧱</span> Materiais</button>
+              <button class="pl-tab" data-tab="mao" type="button"><span>👷</span> Mão de obra</button>
+              <button class="pl-tab" data-tab="energia" type="button"><span>☀️</span> Energia</button>
+              <button class="pl-tab" data-tab="financiamento" type="button"><span>💳</span> Financiamento</button>
+              <button class="pl-tab" data-tab="sustentabilidade" type="button"><span>🌱</span> Sustentabilidade</button>
+            </div>
+
+            <div class="planner__panels">
+              <div class="pl-panel is-active" data-panel="custo">
+                <div class="pl-custo">
+                  <div class="pl-custo__main">
+                    <span>Estimativa total</span>
+                    <strong id="plTotal">—</strong>
+                    <small>Não inclui terreno, projeto, decoração ou taxas.</small>
+                  </div>
+                  <div class="pl-custo__side">
+                    <div><span>Por m²</span><strong id="plPerM2">—</strong></div>
+                    <div><span>Base CUB</span><strong id="plBase">—</strong></div>
+                    <div><span>Confiança</span><strong>± 12%</strong></div>
+                  </div>
+                </div>
+                <div class="pl-chart">
+                  <h4>Distribuição por etapa</h4>
+                  <div class="pl-bars" id="plCustoBars"></div>
+                </div>
+              </div>
+              <div class="pl-panel" data-panel="cronograma">
+                <div class="pl-crono__head">
+                  <div><span>Prazo total</span><strong id="plCronoTotal">—</strong></div>
+                  <div><span>Conclusão</span><strong id="plCronoEnd">—</strong></div>
+                </div>
+                <div class="pl-crono__gantt" id="plGantt"></div>
+              </div>
+              <div class="pl-panel" data-panel="materiais"><div class="pl-mat-grid" id="plMateriais"></div></div>
+              <div class="pl-panel" data-panel="mao">
+                <div class="pl-mao__head"><span>Custo total</span><strong id="plMaoTotal">—</strong></div>
+                <div class="pl-mao__list" id="plMaoList"></div>
+              </div>
+              <div class="pl-panel" data-panel="energia">
+                <div class="pl-en__cards">
+                  <div class="pl-en__card"><span>Consumo anual</span><strong id="plEnConsumo">—</strong></div>
+                  <div class="pl-en__card"><span>Economia</span><strong id="plEnEconomia">—</strong></div>
+                  <div class="pl-en__card"><span>Painéis</span><strong id="plEnPaineis">—</strong></div>
+                  <div class="pl-en__card"><span>Payback</span><strong id="plEnPayback">—</strong></div>
+                </div>
+                <div class="pl-en__chart" id="plEnChart"></div>
+              </div>
+              <div class="pl-panel" data-panel="financiamento">
+                <div class="pl-fin">
+                  <div class="pl-fin__inputs">
+                    <label class="calc__field">
+                      <span>Entrada <strong id="plFinEntradaVal">20%</strong></span>
+                      <input type="range" id="plFinEntrada" min="0" max="50" step="5" value="20" />
+                    </label>
+                    <label class="calc__field">
+                      <span>Prazo <strong id="plFinPrazoVal">20 anos</strong></span>
+                      <input type="range" id="plFinPrazo" min="5" max="30" step="1" value="20" />
+                    </label>
+                    <label class="calc__field">
+                      <span>Taxa <strong id="plFinTaxaVal">10%</strong></span>
+                      <input type="range" id="plFinTaxa" min="4" max="15" step="0.5" value="10" />
+                    </label>
+                  </div>
+                  <div class="pl-fin__result">
+                    <div class="pl-fin__main">
+                      <span>Prestação mensal</span>
+                      <strong id="plFinPrestacao">—</strong>
+                      <small>Sistema SAC</small>
+                    </div>
+                    <div class="pl-fin__side">
+                      <div><span>Valor financiado</span><strong id="plFinValor">—</strong></div>
+                      <div><span>Total pago</span><strong id="plFinTotal">—</strong></div>
+                      <div><span>Juros</span><strong id="plFinJuros">—</strong></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="pl-panel" data-panel="sustentabilidade">
+                <div class="pl-sust">
+                  <div class="pl-sust__score">
+                    <div class="pl-score-ring" id="plScoreRing"></div>
+                    <p id="plScoreLabel">—</p>
+                  </div>
+                  <div class="pl-sust__list" id="plSustList"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="planner__foot">
+              <button class="btn btn--primary" id="plPdfBtn" type="button">Baixar relatório completo</button>
+              <a class="btn btn--ghost" id="plGoMemorial" href="../ia/index.html">Gerar memorial com esses dados ↗</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="pr-faq">
+        <div class="pr-section">
+          <div class="pr-section__head pr-section__head--center">
+            <p class="pr-kicker">Perguntas frequentes</p>
+            <h2>Tudo o que você precisa saber.</h2>
+          </div>
+          <div class="faq">
+            <details class="faq__item"><summary>Preciso de cartão para começar?</summary><p>Não. O plano Standart é gratuito para sempre e não pede cartão.</p></details>
+            <details class="faq__item"><summary>Posso cancelar quando quiser?</summary><p>Sim. Sem fidelidade, sem multa. Cancela em dois cliques.</p></details>
+            <details class="faq__item"><summary>Meus dados ficam seguros?</summary><p>Sim. Criptografia em trânsito e repouso, LGPD compliant.</p></details>
+            <details class="faq__item"><summary>Como funcionam os tokens?</summary><p>Cada geração de memorial ou relatório consome 1 token. Standart tem 3/mês, Médio 50/mês, Escritório ilimitado. Reset automático a cada 30 dias.</p></details>
+            <details class="faq__item"><summary>O que tem no planejamento com IA?</summary><p>7 painéis: custo, cronograma, materiais, mão de obra, energia, financiamento e sustentabilidade. Disponível a partir do plano Médio.</p></details>
+            <details class="faq__item"><summary>Posso mudar de plano depois?</summary><p>Sim. Upgrades ativam na hora. Downgrades entram em vigor no próximo ciclo.</p></details>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-main">
+        <a class="brand" href="../index.html">
+          <img src="../img/logo.png" alt="" width="42" height="42" />
+          <span>VITRUVIANO</span>
+        </a>
+        <p>Arquitetura, inteligência e prática.</p>
+        <a class="footer-cta" href="../ia/index.html">Gerar memorial ↗</a>
+      </div>
+      <div class="footer-columns">
+        <div>
+          <strong>Explorar</strong>
+          <a href="../projetos/index.html">Projetos</a>
+          <a href="../blog/index.html">Comunidade</a>
+          <a href="index.html">Planos</a>
+        </div>
+        <div>
+          <strong>Ferramentas</strong>
+          <a href="../ia/index.html">Memorial IA</a>
+          <a href="index.html">Planejamento IA</a>
+          <a href="../assinar/index.html">Assinar</a>
+        </div>
+        <div>
+          <strong>Contato</strong>
+          <a href="mailto:contato@vitruviano.com">contato@vitruviano.com</a>
+          <a href="../perfil/index.html">Meu perfil</a>
+          <a href="../index.html">Início</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2025 VITRUVIANO</span>
+        <span>Feito para quem projeta o futuro.</span>
+        <span>Brasil · São Paulo</span>
+      </div>
+    </footer>
+
+    <div class="mem-toast" id="toast" role="status" aria-live="polite"></div>
+
+    <script src="premium.js" defer></script>
+    <script type="module">
+      import { init } from "../firebase/auth-ui.js";
+      import { personalize } from "../firebase/personalize.js";
+      import { onUser } from "../firebase/auth.js";
+      import { getUserTokens } from "../firebase/tokens.js";
+
+      init();
+      personalize();
+
+      /* ============================================================
+         ELEMENTOS
+         ============================================================ */
+      const tokenBadge = document.getElementById("tokenBadge");
+      const tokenCounter = document.getElementById("tokenCounter");
+      const tokenPlanLabel = document.getElementById("tokenPlanLabel");
+      const plannerGate = document.getElementById("plannerGate");
+      const gateCard = document.getElementById("gateCard");
+
+      /* ============================================================
+         RENDERIZA TOKENS + GATE
+         ============================================================ */
+      function renderTokenUI() {
+        const info = getUserTokens();
+        const isStandart = info.planName === "Standart";
+        const hasTokens = info.unlimited || info.remaining > 0;
+
+        /* ---------- Badge flutuante ---------- */
+        if (tokenCounter) {
+          tokenCounter.innerHTML = info.unlimited
+            ? '<em>Ilimitado</em>'
+            : '<em>' + info.remaining + '</em> de ' + info.limit + ' usos';
+        }
+        if (tokenPlanLabel) tokenPlanLabel.textContent = info.planName;
+
+        if (tokenBadge) {
+          tokenBadge.classList.toggle("is-low", !info.unlimited && info.remaining <= 1 && info.remaining > 0);
+          tokenBadge.classList.toggle("is-empty", !info.unlimited && info.remaining === 0);
+        }
+
+        /* ---------- Gate do planner ---------- */
+        if (!plannerGate || !gateCard) return;
+
+        // Caso 1: Plano Standart → planner bloqueado
+        if (isStandart) {
+          plannerGate.hidden = false;
+          gateCard.innerHTML =
+            '<div class="planner-gate__lock">🔒</div>' +
+            '<h3>Recurso exclusivo.<br><em>Faça upgrade.</em></h3>' +
+            '<p>O <strong>Planejamento com IA</strong> está disponível a partir do plano <strong>Médio</strong>. Faça upgrade e desbloqueie custo, cronograma, materiais, mão de obra, energia, financiamento e sustentabilidade — tudo de uma vez.</p>' +
+            '<div class="planner-gate__counter">' +
+              '<span>◆</span>' +
+              '<span>Plano Médio · 50 usos · R$ 19/mês</span>' +
+            '</div>' +
+            '<div class="planner-gate__actions">' +
+              '<a class="btn btn--primary" href="../assinar/index.html">' +
+                'Fazer upgrade agora' +
+                '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>' +
+              '</a>' +
+              '<a class="btn btn--ghost" href="../ia/index.html">Voltar ao Memorial</a>' +
+            '</div>';
+          return;
+        }
+
+        // Caso 2: Médio/Escritório mas sem tokens
+        if (!hasTokens) {
+          plannerGate.hidden = false;
+          const nextPlan = info.planName === "Médio" ? "Escritório (ilimitado)" : "Médio (50 usos)";
+          gateCard.innerHTML =
+            '<div class="planner-gate__lock">🔒</div>' +
+            '<h3>Seus tokens acabaram.<br><em>Hora de evoluir.</em></h3>' +
+            '<p>Você usou todos os <strong>' + info.limit + ' usos</strong> do Plano ' + info.planName + ' este mês. Faça upgrade para o <strong>' + nextPlan + '</strong> e continue planejando com IA.</p>' +
+            '<div class="planner-gate__counter">' +
+              '<span>◆</span>' +
+              '<span>' + info.used + ' de ' + info.limit + ' usos utilizados</span>' +
+            '</div>' +
+            '<div class="planner-gate__actions">' +
+              '<a class="btn btn--primary" href="../assinar/index.html">' +
+                'Ver planos e fazer upgrade' +
+                '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>' +
+              '</a>' +
+              '<a class="btn btn--ghost" href="../ia/index.html">Voltar ao Memorial</a>' +
+            '</div>';
+          return;
+        }
+
+        // Caso 3: Tudo OK → libera o planner
+        plannerGate.hidden = true;
+      }
+
+      /* ============================================================
+         BADGE → vai pro perfil
+         ============================================================ */
+      if (tokenBadge) {
+        tokenBadge.addEventListener("click", () => {
+          window.location.href = "../perfil/index.html";
+        });
+      }
+
+      /* ============================================================
+         MARCA PLANO ATUAL NOS CARDS
+         ============================================================ */
+      function marcarPlanoAtualCards() {
+        const info = getUserTokens();
+        document.querySelectorAll(".plan[data-plan-name]").forEach((card) => {
+          card.classList.toggle("plan--current", card.dataset.planName === info.planName);
+        });
+      }
+
+      /* ============================================================
+         EVENTOS
+         ============================================================ */
+      window.addEventListener("vitruviano:tokens", () => {
+        renderTokenUI();
+        marcarPlanoAtualCards();
+      });
+      window.addEventListener("vitruviano:plan", () => {
+        renderTokenUI();
+        marcarPlanoAtualCards();
+      });
+
+      onUser(() => {
+        renderTokenUI();
+        marcarPlanoAtualCards();
+      });
+    </script>
+  </body>
+</html>

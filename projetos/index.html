@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="pt-BR" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#fdfaf3" />
+    <title>Projetos · VITRUVIANO</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="../firebase/auth.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+    <header class="site-header">
+      <a class="brand" href="../index.html">
+        <img src="../img/logo.png" alt="" width="42" height="42" />
+        <span>VITRUVIANO</span>
+      </a>
+      <nav class="site-nav" id="site-nav">
+        <a href="index.html" class="is-current">Projetos</a>
+        <a href="../ia/index.html">Memorial IA</a>
+        <a href="../premium/index.html">Planos</a>
+        <a href="../blog/index.html">Comunidade</a>
+      </nav>
+      <div class="nav-actions">
+        <button class="theme-toggle" type="button" aria-label="Alternar tema">
+          <svg viewBox="0 0 24 24" width="17" height="17"><circle cx="12" cy="12" r="4" fill="currentColor"/><g stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></g></svg>
+        </button>
+        <div class="auth-user" id="authContainer"></div>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-label="Abrir menu">
+          <span></span><span></span>
+        </button>
+      </div>
+    </header>
+
+    <div class="welcome-bar" data-auth-only>
+      <div class="welcome-bar__avatar" data-user-avatar-fallback>?</div>
+      <div class="welcome-bar__info">
+        <strong data-user-welcome>Bem-vindo.</strong>
+        <small>Explore o portfólio completo do estúdio</small>
+      </div>
+      <a class="welcome-bar__link" href="../perfil/index.html">
+        Meu perfil
+        <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+
+    <main id="conteudo">
+      <section class="p-hero p-hero--caramel">
+        <div class="p-hero__inner">
+          <p class="p-hero__kicker">Portfólio · 2013—2025</p>
+          <h1>Projetos que nascem do <em>lugar.</em></h1>
+          <p class="p-hero__lead">Doze anos desenhando casas, interiores e espaços comerciais com foco em matéria honesta, luz natural e permanência.</p>
+          <div class="p-hero__meta">
+            <span><strong>180+</strong>projetos entregues</span>
+            <span><strong>12</strong>anos de prática</span>
+            <span><strong>8</strong>estados brasileiros</span>
+            <span><strong>4.9/5</strong>satisfação</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="band" style="padding-top: 0;">
+        <div class="chip-bar" role="group" aria-label="Filtrar">
+          <button class="chip is-active" data-filter="todos">Todos</button>
+          <button class="chip" data-filter="residencial">Residencial</button>
+          <button class="chip" data-filter="comercial">Comercial</button>
+          <button class="chip" data-filter="interiores">Interiores</button>
+          <button class="chip" data-filter="reforma">Reforma</button>
+        </div>
+
+        <div class="pg-grid">
+          <article class="pg-card" data-category="residencial">
+            <a class="pg-card__media" href="casa-vale.html">
+              <span class="pg-card__badge">Residencial</span>
+              <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1200&q=80" alt="Casa Vale" loading="lazy" />
+            </a>
+            <div class="pg-card__info">
+              <div><h3>Casa Vale</h3><p>Serra da Mantiqueira · 2024</p></div>
+              <span class="pg-card__year">2024</span>
+            </div>
+          </article>
+
+          <article class="pg-card" data-category="comercial">
+            <a class="pg-card__media" href="estudio-27.html">
+              <span class="pg-card__badge">Comercial</span>
+              <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1000&q=80" alt="Estúdio 27" loading="lazy" />
+            </a>
+            <div class="pg-card__info">
+              <div><h3>Estúdio 27</h3><p>São Paulo · 2023</p></div>
+              <span class="pg-card__year">2023</span>
+            </div>
+          </article>
+
+          <article class="pg-card" data-category="interiores">
+            <a class="pg-card__media" href="apartamento-p.html">
+              <span class="pg-card__badge">Interiores</span>
+              <img src="https://images.unsplash.com/photo-1600607688969-a5bfcd646154?auto=format&fit=crop&w=1000&q=80" alt="Apartamento P" loading="lazy" />
+            </a>
+            <div class="pg-card__info">
+              <div><h3>Apartamento P</h3><p>Rio de Janeiro · 2023</p></div>
+              <span class="pg-card__year">2023</span>
+            </div>
+          </article>
+
+          <article class="pg-card" data-category="residencial">
+            <a class="pg-card__media" href="casa-aberta.html">
+              <span class="pg-card__badge">Residencial</span>
+              <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1000&q=80" alt="Casa Aberta" loading="lazy" />
+            </a>
+            <div class="pg-card__info">
+              <div><h3>Casa Aberta</h3><p>Campinas · 2022</p></div>
+              <span class="pg-card__year">2022</span>
+            </div>
+          </article>
+
+          <article class="pg-card" data-category="reforma">
+            <a class="pg-card__media" href="loft-centro.html">
+              <span class="pg-card__badge">Reforma</span>
+              <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=1000&q=80" alt="Loft Centro" loading="lazy" />
+            </a>
+            <div class="pg-card__info">
+              <div><h3>Loft Centro</h3><p>Belo Horizonte · 2022</p></div>
+              <span class="pg-card__year">2022</span>
+            </div>
+          </article>
+
+          <article class="pg-card" data-category="comercial">
+            <a class="pg-card__media" href="cafe-serra.html">
+              <span class="pg-card__badge">Comercial</span>
+              <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1000&q=80" alt="Café Serra" loading="lazy" />
+            </a>
+            <div class="pg-card__info">
+              <div><h3>Café Serra</h3><p>Campos do Jordão · 2021</p></div>
+              <span class="pg-card__year">2021</span>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-main">
+        <a class="brand" href="../index.html">
+          <img src="../img/logo.png" alt="" width="42" height="42" />
+          <span>VITRUVIANO</span>
+        </a>
+        <p>Arquitetura, inteligência e prática.</p>
+        <a class="footer-cta" href="../ia/index.html">Gerar memorial ↗</a>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2025 VITRUVIANO</span>
+        <span>Brasil · São Paulo</span>
+      </div>
+    </footer>
+
+    <script>
+      // TEMA
+      (function () {
+        const root = document.documentElement;
+        let t;
+        try { t = localStorage.getItem("vitruviano:theme"); } catch {}
+        if (!t) t = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        root.setAttribute("data-theme", t);
+        document.querySelector(".theme-toggle").addEventListener("click", () => {
+          const next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+          root.setAttribute("data-theme", next);
+          try { localStorage.setItem("vitruviano:theme", next); } catch {}
+        });
+      })();
+      // MENU
+      (function () {
+        const mt = document.querySelector(".menu-toggle");
+        const nav = document.querySelector(".site-nav");
+        mt?.addEventListener("click", () => {
+          const open = nav.classList.toggle("is-open");
+          mt.setAttribute("aria-expanded", String(open));
+        });
+      })();
+      // FILTROS
+      (function () {
+        const chips = document.querySelectorAll(".chip");
+        const cards = document.querySelectorAll(".pg-card");
+        chips.forEach((c) => c.addEventListener("click", () => {
+          chips.forEach((x) => x.classList.toggle("is-active", x === c));
+          const cat = c.dataset.filter;
+          cards.forEach((card) => {
+            card.hidden = !(cat === "todos" || card.dataset.category === cat);
+          });
+        }));
+      })();
+    </script>
+
+    <script type="module">
+      import { init } from "../firebase/auth-ui.js";
+      import { personalize } from "../firebase/personalize.js";
+      init();
+      personalize();
+    </script>
+  </body>
+</html>

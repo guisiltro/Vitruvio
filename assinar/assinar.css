@@ -1,0 +1,235 @@
+/* ============================================================
+   CARTÃO — validação visual e bandeira
+   ============================================================ */
+
+.pay-field--card { position: relative; }
+
+.pay-field__wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.pay-field__wrap input {
+  padding-right: 56px;
+  width: 100%;
+}
+
+.pay-field__brand {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 24px;
+  display: flex;
+  align-items: center;
+  font: 800 11px var(--font-mono);
+  letter-spacing: .04em;
+  padding: 4px 8px;
+  border-radius: 4px;
+  opacity: 0;
+  transition: opacity .2s;
+}
+.pay-field__brand.is-active { opacity: 1; }
+.pay-field__brand[data-brand="Visa"] { background: #1A1F71; color: #fff; }
+.pay-field__brand[data-brand="Mastercard"] { background: #EB001B; color: #fff; }
+.pay-field__brand[data-brand="Elo"] { background: #000; color: #FFCB05; }
+.pay-field__brand[data-brand="Amex"] { background: #006FCF; color: #fff; }
+.pay-field__brand[data-brand="Hipercard"] { background: #B3131B; color: #fff; }
+.pay-field__brand[data-brand="Diners"] { background: #0079BE; color: #fff; }
+
+.pay-field__error {
+  display: block;
+  min-height: 1em;
+  font-size: 11px;
+  font-weight: 600;
+  margin-top: 4px;
+  transition: color .2s;
+}
+.pay-field__error.is-error { color: #b34040; }
+.pay-field__error.is-success { color: #4d804d; }
+
+.pay-field input.is-valid {
+  border-color: #7cb37c;
+  background: rgba(124,179,124,.06);
+}
+.pay-field input.is-invalid {
+  border-color: #e88a8a;
+  background: rgba(232,138,138,.06);
+}
+
+.pay-field__cvv-hint {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px; height: 20px;
+  display: grid; place-items: center;
+  background: var(--sunken);
+  color: var(--ink-muted);
+  border-radius: 50%;
+  font: 800 11px var(--font-sans);
+  cursor: help;
+}
+
+.payment__test-cards {
+  float: right;
+  background: none;
+  border: 0;
+  padding: 0;
+  font: 700 10px var(--font-mono);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--caramel-deep);
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.payment__test-cards:hover { color: var(--ink); }
+
+/* ============================================================
+   MODAL DE CARTÕES DE TESTE
+   ============================================================ */
+.test-cards-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(20,14,8,.75);
+  backdrop-filter: blur(10px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: var(--s-5);
+}
+.test-cards-modal.is-open { display: flex; animation: fade-in .25s; }
+
+.test-cards-modal__card {
+  background: var(--surface);
+  border-radius: var(--r-lg);
+  width: min(520px, 100%);
+  max-height: calc(100dvh - 40px);
+  overflow-y: auto;
+  box-shadow: 0 40px 100px rgba(0,0,0,.5);
+  animation: pop-in .35s var(--ease);
+}
+@keyframes pop-in { from { opacity: 0; transform: translateY(20px) scale(.96); } }
+@keyframes fade-in { from { opacity: 0; } }
+
+.test-cards-modal__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--s-5);
+  border-bottom: 1px solid var(--line);
+}
+.test-cards-modal__head h3 {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--ink);
+  margin: 0;
+}
+.test-cards-modal__close {
+  width: 34px; height: 34px;
+  background: var(--cream);
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  font-size: 20px;
+  cursor: pointer;
+  display: grid; place-items: center;
+  transition: transform .2s;
+  color: var(--ink-muted);
+}
+.test-cards-modal__close:hover { transform: rotate(90deg); }
+
+.test-cards-modal__lead {
+  padding: var(--s-4) var(--s-5) 0;
+  font-size: 13px;
+  color: var(--ink-muted);
+  margin: 0;
+  line-height: 1.55;
+}
+
+.test-cards-list {
+  padding: var(--s-4) var(--s-5);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.test-card {
+  display: grid;
+  grid-template-columns: 48px 1fr auto;
+  gap: 14px;
+  align-items: center;
+  padding: 14px 16px;
+  background: var(--surface);
+  border: 1px solid var(--line-2);
+  border-radius: var(--r-md);
+  cursor: pointer;
+  transition: all .2s;
+  text-align: left;
+}
+.test-card:hover {
+  border-color: var(--caramel);
+  background: var(--sunlight-2);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(201,165,116,.2);
+}
+
+.test-card__flag {
+  width: 48px; height: 34px;
+  display: grid; place-items: center;
+  border-radius: 5px;
+  font: 800 10px var(--font-mono);
+  letter-spacing: .05em;
+  flex: none;
+}
+.test-card__flag--visa { background: #1A1F71; color: #fff; }
+.test-card__flag--master { background: #EB001B; color: #fff; }
+.test-card__flag--elo { background: #000; color: #FFCB05; }
+
+.test-card__info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+.test-card__info strong {
+  font-size: 13.5px;
+  font-weight: 800;
+  color: var(--ink);
+  letter-spacing: -.01em;
+}
+.test-card__info small {
+  font: 500 11px var(--font-mono);
+  color: var(--ink-muted);
+  letter-spacing: .04em;
+}
+
+.test-card__num {
+  font: 500 11.5px var(--font-mono);
+  color: var(--ink-subtle);
+  letter-spacing: .04em;
+  white-space: nowrap;
+}
+
+.test-cards-modal__note {
+  padding: var(--s-3) var(--s-5) var(--s-5);
+  font-size: 11.5px;
+  color: var(--ink-subtle);
+  line-height: 1.5;
+  margin: 0;
+  border-top: 1px solid var(--line);
+  padding-top: var(--s-4);
+}
+
+@media (max-width: 600px) {
+  .test-card {
+    grid-template-columns: 42px 1fr;
+    gap: 10px;
+  }
+  .test-card__num {
+    grid-column: 1 / -1;
+    padding-left: 52px;
+    font-size: 11px;
+  }
+}

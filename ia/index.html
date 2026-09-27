@@ -1,0 +1,1158 @@
+<!doctype html>
+
+<html lang="pt-BR" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#fdfaf3" />
+
+```
+<title>Memorial IA · VITRUVIANO</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+<link
+  href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap"
+  rel="stylesheet"
+/>
+
+<link rel="stylesheet" href="../style.css" />
+<link rel="stylesheet" href="../firebase/auth.css" />
+<link rel="stylesheet" href="ia.css" />
+
+<!-- NOVO: CSS do sistema de tokens -->
+<link rel="stylesheet" href="../premium/tokens-ui.css" />
+```
+
+  </head>
+
+  <body class="page-memorial">
+
+```
+<!-- NOVO: indicador de tokens -->
+<div class="token-badge" id="tokenBadge">
+  <span class="token-badge__icon">◆</span>
+
+  <div class="token-badge__info">
+    <small id="tokenPlanLabel">Plano Standart</small>
+    <strong id="tokenCounter">3 de 3 usos</strong>
+  </div>
+</div>
+
+<a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+<header class="site-header">
+  <a class="brand" href="../index.html">
+    <img src="../img/logo.png" alt="" width="42" height="42" />
+    <span>VITRUVIANO</span>
+  </a>
+
+  <nav class="site-nav" id="site-nav">
+    <a href="../projetos/index.html">Projetos</a>
+    <a href="index.html" class="is-current">Memorial IA</a>
+    <a href="../premium/index.html">Planos</a>
+    <a href="../blog/index.html">Comunidade</a>
+  </nav>
+
+  <div class="nav-actions">
+    <button
+      class="theme-toggle"
+      type="button"
+      aria-label="Alternar tema"
+    >
+      <svg
+        viewBox="0 0 24 24"
+        width="17"
+        height="17"
+      >
+        <circle
+          cx="12"
+          cy="12"
+          r="4"
+          fill="currentColor"
+        />
+
+        <g
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+        >
+          <path d="M12 2v3M12 19v3M2 12h3M19 12h3" />
+          <path d="M4.9 4.9l2.1 2.1M17 17l2.1 2.1" />
+          <path d="M4.9 19.1L7 17M17 7l2.1-2.1" />
+        </g>
+      </svg>
+    </button>
+
+    <div class="auth-user" id="authContainer"></div>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-expanded="false"
+      aria-label="Abrir menu"
+    >
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</header>
+
+<div class="welcome-bar" data-auth-only>
+  <div class="welcome-bar__avatar" data-user-avatar-fallback>?</div>
+
+  <div class="welcome-bar__info">
+    <strong data-user-welcome>Bem-vindo.</strong>
+
+    <small>
+      <span data-user-stat="memoriais">0</span>
+      memoriais gerados ·
+      <span data-user-plan>Plano Solo</span>
+    </small>
+  </div>
+
+  <span class="welcome-bar__plan">
+    <span class="welcome-bar__plan-dot"></span>
+    <span data-user-plan>Plano Solo</span>
+  </span>
+
+  <a class="welcome-bar__link" href="../perfil/index.html">
+    Meu perfil
+
+    <svg
+      viewBox="0 0 24 24"
+      width="12"
+      height="12"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2.4"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <path d="M5 12h14M13 5l7 7-7 7" />
+    </svg>
+  </a>
+</div>
+
+<main id="conteudo">
+
+  <section class="mem-head">
+    <div class="mem-head__inner">
+
+      <div class="mem-head__copy">
+        <p class="mem-head__kicker">
+          <span class="mem-head__dot"></span>
+          Assistente AN · Gerador de memorial
+        </p>
+
+        <h1>
+          Memorial <em>inteligente</em>, em minutos.
+        </h1>
+
+        <p class="mem-head__lead">
+          Preencha os dados — ou dite por voz. A AN gera um documento completo
+          conforme <strong>NBR 13531</strong>, com estimativa de custo, imagens
+          conceituais e pronto para exportar em <strong>PDF</strong>.
+        </p>
+      </div>
+
+      <aside class="mem-head__tips">
+
+        <div class="tip">
+          <span class="tip__icon">🎙</span>
+
+          <div>
+            <strong>Comando de voz</strong>
+            <span>
+              Diga "nome Casa Vale", "área 180" ou "gerar memorial".
+            </span>
+          </div>
+        </div>
+
+        <div class="tip">
+          <span class="tip__icon">🎨</span>
+
+          <div>
+            <strong>Imagens com IA</strong>
+            <span>
+              Fachada, interior, aérea e planta 3D.
+            </span>
+          </div>
+        </div>
+
+        <div class="tip">
+          <span class="tip__icon">📄</span>
+
+          <div>
+            <strong>PDF com sua marca</strong>
+            <span>
+              Logo no cabeçalho e rodapé.
+            </span>
+          </div>
+        </div>
+
+      </aside>
+    </div>
+  </section>
+
+  <section class="mem-templates">
+    <div class="mem-templates__inner">
+
+      <span class="mem-templates__label">
+        Começar de um modelo:
+      </span>
+
+      <div class="tpl-row">
+        <button class="tpl" type="button" data-tpl="residencial-simples">
+          🏠 Casa simples
+        </button>
+
+        <button class="tpl" type="button" data-tpl="residencial-completo">
+          🏡 Casa completa
+        </button>
+
+        <button class="tpl" type="button" data-tpl="comercial">
+          🏢 Comercial
+        </button>
+
+        <button class="tpl" type="button" data-tpl="reforma">
+          🔨 Reforma
+        </button>
+
+        <button class="tpl" type="button" data-tpl="limpar">
+          🗑 Limpar
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <section class="mem-workspace">
+
+    <form
+      class="mform"
+      id="mform"
+      autocomplete="off"
+      novalidate
+    >
+
+      <div class="mform__progress">
+        <div class="mform__progress-bar">
+          <span id="progressBar"></span>
+        </div>
+
+        <small id="progressText">
+          0 de 4 campos essenciais preenchidos
+        </small>
+      </div>
+
+      <fieldset class="mform__group">
+
+        <legend>
+          <span class="mform__legend-num">01</span>
+          Identificação
+        </legend>
+
+        <label class="field field--voice">
+          <span>Nome do projeto</span>
+
+          <input
+            type="text"
+            id="f-nome"
+            placeholder="Ex: Casa Vale"
+          />
+
+          <button
+            type="button"
+            class="field__mic"
+            data-voice-for="f-nome"
+            aria-label="Ditar nome"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              width="14"
+              height="14"
+            >
+              <rect
+                x="9"
+                y="3"
+                width="6"
+                height="12"
+                rx="3"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              />
+
+              <path
+                d="M5 11a7 7 0 0 0 14 0M12 18v3M8 21h8"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+            </svg>
+          </button>
+        </label>
+
+        <label class="field field--voice">
+          <span>Cliente / proprietário</span>
+
+          <input
+            type="text"
+            id="f-cliente"
+            placeholder="Ex: Família Ribeiro"
+          />
+
+          <button
+            type="button"
+            class="field__mic"
+            data-voice-for="f-cliente"
+            aria-label="Ditar cliente"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              width="14"
+              height="14"
+            >
+              <rect
+                x="9"
+                y="3"
+                width="6"
+                height="12"
+                rx="3"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              />
+
+              <path
+                d="M5 11a7 7 0 0 0 14 0M12 18v3M8 21h8"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+            </svg>
+          </button>
+        </label>
+
+        <label class="field field--voice">
+          <span>Localização</span>
+
+          <input
+            type="text"
+            id="f-local"
+            placeholder="Ex: Campos do Jordão – SP"
+          />
+
+          <button
+            type="button"
+            class="field__mic"
+            data-voice-for="f-local"
+            aria-label="Ditar local"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              width="14"
+              height="14"
+            >
+              <rect
+                x="9"
+                y="3"
+                width="6"
+                height="12"
+                rx="3"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              />
+
+              <path
+                d="M5 11a7 7 0 0 0 14 0M12 18v3M8 21h8"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+            </svg>
+          </button>
+        </label>
+
+      </fieldset>
+
+      <fieldset class="mform__group">
+
+        <legend>
+          <span class="mform__legend-num">02</span>
+          Dados técnicos
+        </legend>
+
+        <div class="mform__row">
+
+          <label class="field">
+            <span>Área (m²)</span>
+
+            <input
+              type="number"
+              id="f-area"
+              placeholder="180"
+              min="10"
+              max="10000"
+            />
+          </label>
+
+          <label class="field">
+            <span>Pavimentos</span>
+
+            <input
+              type="number"
+              id="f-pav"
+              placeholder="2"
+              min="1"
+              max="20"
+              value="1"
+            />
+          </label>
+
+        </div>
+
+        <div class="field">
+          <span>Tipologia</span>
+
+          <div
+            class="chips"
+            id="f-tipo"
+            role="radiogroup"
+          >
+            <button
+              type="button"
+              data-value="residencial"
+              class="is-active"
+              role="radio"
+              aria-checked="true"
+            >
+              Residencial
+            </button>
+
+            <button
+              type="button"
+              data-value="comercial"
+              role="radio"
+              aria-checked="false"
+            >
+              Comercial
+            </button>
+
+            <button
+              type="button"
+              data-value="reforma"
+              role="radio"
+              aria-checked="false"
+            >
+              Reforma
+            </button>
+
+            <button
+              type="button"
+              data-value="interiores"
+              role="radio"
+              aria-checked="false"
+            >
+              Interiores
+            </button>
+          </div>
+        </div>
+
+        <div class="field">
+          <span>Padrão construtivo</span>
+
+          <div
+            class="chips"
+            id="f-padrao"
+            role="radiogroup"
+          >
+            <button
+              type="button"
+              data-value="popular"
+              role="radio"
+              aria-checked="false"
+            >
+              Popular
+            </button>
+
+            <button
+              type="button"
+              data-value="medio"
+              class="is-active"
+              role="radio"
+              aria-checked="true"
+            >
+              Médio
+            </button>
+
+            <button
+              type="button"
+              data-value="alto"
+              role="radio"
+              aria-checked="false"
+            >
+              Alto
+            </button>
+          </div>
+        </div>
+
+      </fieldset>
+
+      <fieldset class="mform__group">
+
+        <legend>
+          <span class="mform__legend-num">03</span>
+          Seções
+
+          <div class="mform__legend-actions">
+            <button
+              type="button"
+              class="mini-link"
+              data-toggle-sections="all"
+            >
+              Todos
+            </button>
+
+            <button
+              type="button"
+              class="mini-link"
+              data-toggle-sections="none"
+            >
+              Nenhum
+            </button>
+          </div>
+        </legend>
+
+        <div class="checks" id="f-secoes">
+
+          <label class="check">
+            <input type="checkbox" value="preliminares" checked />
+            <span>Serviços preliminares</span>
+          </label>
+
+          <label class="check">
+            <input type="checkbox" value="infra" checked />
+            <span>Infraestrutura</span>
+          </label>
+
+          <label class="check">
+            <input type="checkbox" value="supra" checked />
+            <span>Superestrutura</span>
+          </label>
+
+          <label class="check">
+            <input type="checkbox" value="vedacoes" checked />
+            <span>Vedações</span>
+          </label>
+
+          <label class="check">
+            <input type="checkbox" value="cobertura" checked />
+            <span>Cobertura</span>
+          </label>
+
+          <label class="check">
+            <input type="checkbox" value="impermeab" checked />
+            <span>Impermeabilização</span>
+          </label>
+
+          <label class="check">
+            <input type="checkbox" value="esquadrias" checked />
+            <span>Esquadrias</span>
+          </label>
+
+          <label class="check">
+            <input type="checkbox" value="revest" checked />
+            <span>Revestimentos</span>
+          </label>
+
+          <label class="check">
+            <input type="checkbox" value="pintura" checked />
+            <span>Pintura</span>
+          </label>
+
+          <label class="check">
+            <input type="checkbox" value="loucas" checked />
+            <span>Louças e metais</span>
+          </label>
+
+          <label class="check">
+            <input type="checkbox" value="eletrica" checked />
+            <span>Elétrica</span>
+          </label>
+
+          <label class="check">
+            <input type="checkbox" value="hidraulica" checked />
+            <span>Hidráulica</span>
+          </label>
+
+          <label class="check">
+            <input type="checkbox" value="custo" />
+            <span>Estimativa de custo</span>
+          </label>
+
+          <label class="check">
+            <input type="checkbox" value="cronograma" />
+            <span>Cronograma</span>
+          </label>
+
+        </div>
+      </fieldset>
+
+      <fieldset class="mform__group">
+
+        <legend>
+          <span class="mform__legend-num">04</span>
+          Observações
+        </legend>
+
+        <div class="voice-field">
+
+          <textarea
+            id="f-obs"
+            rows="4"
+            placeholder="Dite ou escreva detalhes específicos: materiais, cores, estilo..."
+          ></textarea>
+
+          <button
+            type="button"
+            class="voice-btn"
+            id="voiceBtn"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              width="15"
+              height="15"
+            >
+              <rect
+                x="9"
+                y="3"
+                width="6"
+                height="12"
+                rx="3"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              />
+
+              <path
+                d="M5 11a7 7 0 0 0 14 0M12 18v3M8 21h8"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+            </svg>
+
+            <span>Ditar</span>
+          </button>
+        </div>
+
+        <span
+          class="voice-status"
+          id="voiceStatus"
+          aria-live="polite"
+        ></span>
+      </fieldset>
+
+      <div class="voice-command">
+
+        <button
+          type="button"
+          class="voice-command__btn"
+          id="voiceCommandBtn"
+        >
+          <span class="voice-command__mic">
+            <svg
+              viewBox="0 0 24 24"
+              width="20"
+              height="20"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <rect
+                x="9"
+                y="3"
+                width="6"
+                height="12"
+                rx="3"
+              />
+
+              <path
+                d="M5 11a7 7 0 0 0 14 0M12 18v3M8 21h8"
+                stroke-linecap="round"
+              />
+            </svg>
+          </span>
+
+          <span class="voice-command__text">
+            <strong id="voiceCommandTitle">
+              Comando de voz
+            </strong>
+
+            <small id="voiceCommandHint">
+              Diga: "nome Casa Vale", "área 180", "gerar memorial"
+            </small>
+          </span>
+
+          <span class="voice-command__indicator"></span>
+        </button>
+
+        <canvas id="voiceVisualizer"></canvas>
+
+        <div
+          class="voice-command__live"
+          id="voiceCommandLive"
+          aria-live="polite"
+        ></div>
+
+      </div>
+
+      <div class="mform__actions">
+
+        <button
+          type="button"
+          class="btn btn--primary mform__generate"
+          id="generateBtn"
+        >
+          <svg
+            viewBox="0 0 24 24"
+            width="16"
+            height="16"
+          >
+            <path
+              d="M5 12l5 5L20 7"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.4"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+
+          <span>Gerar memorial</span>
+        </button>
+
+      </div>
+
+    </form>
+
+    <section class="mpreview">
+
+      <header class="mpreview__toolbar">
+
+        <div
+          class="mpreview__status"
+          id="previewStatus"
+        >
+          <span class="mpreview__dot"></span>
+          <span>Aguardando dados</span>
+        </div>
+
+        <div class="mpreview__actions">
+
+          <button
+            type="button"
+            id="imagemBtn"
+            disabled
+            title="Gerar imagens com IA"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              width="14"
+              height="14"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <rect
+                x="3"
+                y="3"
+                width="18"
+                height="18"
+                rx="2"
+              />
+
+              <circle
+                cx="8.5"
+                cy="8.5"
+                r="1.5"
+              />
+
+              <path d="M21 15l-5-5L5 21" />
+            </svg>
+
+            <span>Imagem</span>
+          </button>
+
+          <button
+            type="button"
+            id="copyBtn"
+            disabled
+            title="Copiar"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              width="14"
+              height="14"
+            >
+              <rect
+                x="9"
+                y="9"
+                width="12"
+                height="12"
+                rx="2"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              />
+
+              <path
+                d="M5 15V5a2 2 0 0 1 2-2h10"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              />
+            </svg>
+
+            <span>Copiar</span>
+          </button>
+
+          <button
+            type="button"
+            id="docxBtn"
+            disabled
+            title="Baixar .doc"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              width="14"
+              height="14"
+            >
+              <path
+                d="M12 3v13M6 12l6 6 6-6M4 21h16"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+
+            <span>.doc</span>
+          </button>
+
+          <button
+            type="button"
+            id="pdfBtn"
+            disabled
+            title="PDF com logo"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              width="14"
+              height="14"
+            >
+              <path
+                d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              />
+
+              <path
+                d="M14 2v6h6M9 15h6M9 11h3"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+            </svg>
+
+            <span>PDF</span>
+          </button>
+
+        </div>
+      </header>
+
+      <article class="mdoc" id="mdoc">
+
+        <div
+          class="mdoc__placeholder"
+          id="mdocPlaceholder"
+        >
+
+          <div class="mdoc__placeholder-icon">
+            <svg
+              viewBox="0 0 24 24"
+              width="52"
+              height="52"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.4"
+            >
+              <path
+                d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
+              />
+
+              <path
+                d="M14 2v6h6M8 13h8M8 17h5"
+                stroke-linecap="round"
+              />
+            </svg>
+          </div>
+
+          <h3>
+            Seu memorial vai aparecer aqui
+          </h3>
+
+          <p>
+            Preencha os dados ou escolha um modelo acima.
+            Depois clique em <strong>Gerar memorial</strong>.
+          </p>
+
+        </div>
+
+      </article>
+    </section>
+
+    <section
+      class="imagem-view"
+      id="imagemView"
+      hidden
+    >
+
+      <header class="imagem-view__head">
+
+        <div>
+          <h3>Pré-visualização com IA</h3>
+
+          <p>
+            Imagens conceituais geradas a partir dos dados do projeto
+          </p>
+        </div>
+
+        <button
+          type="button"
+          class="imagem-view__close"
+          id="closeImagemView"
+          aria-label="Fechar"
+        >
+          ×
+        </button>
+
+      </header>
+
+      <div class="imagem-view__tabs">
+
+        <button
+          class="imagem-tab is-active"
+          data-view="fachada"
+          type="button"
+        >
+          🏠 Fachada
+        </button>
+
+        <button
+          class="imagem-tab"
+          data-view="interior"
+          type="button"
+        >
+          🛋 Interior
+        </button>
+
+        <button
+          class="imagem-tab"
+          data-view="aerea"
+          type="button"
+        >
+          🚁 Aérea
+        </button>
+
+        <button
+          class="imagem-tab"
+          data-view="planta3d"
+          type="button"
+        >
+          📐 Planta 3D
+        </button>
+
+      </div>
+
+      <div
+        class="imagem-view__grid"
+        id="imagemGrid"
+      ></div>
+
+      <div class="imagem-view__foot">
+
+        <button
+          type="button"
+          class="btn btn--ghost"
+          id="regenerateImagens"
+        >
+          <svg
+            viewBox="0 0 24 24"
+            width="14"
+            height="14"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M23 4v6h-6M1 20v-6h6" />
+            <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15" />
+          </svg>
+
+          Gerar outras variações
+        </button>
+
+        <span class="imagem-view__note">
+          ⚠ Imagens conceituais geradas por IA.
+          Não substituem renders profissionais.
+        </span>
+
+      </div>
+
+    </section>
+
+  </section>
+</main>
+
+<footer class="site-footer">
+
+  <div class="footer-main">
+
+    <a class="brand" href="../index.html">
+      <img
+        src="../img/logo.png"
+        alt=""
+        width="42"
+        height="42"
+      />
+
+      <span>VITRUVIANO</span>
+    </a>
+
+    <p>
+      Arquitetura, inteligência e prática.
+    </p>
+
+    <a
+      class="footer-cta"
+      href="../premium/index.html"
+    >
+      Ver planos ↗
+    </a>
+
+  </div>
+
+  <div class="footer-bottom">
+    <span>© 2025 VITRUVIANO</span>
+    <span>Brasil · São Paulo</span>
+  </div>
+
+</footer>
+
+<div
+  class="mem-toast"
+  id="toast"
+  role="status"
+  aria-live="polite"
+></div>
+
+<script src="ia.js" defer></script>
+
+<script type="module">
+  import { init } from "../firebase/auth-ui.js";
+  import { personalize } from "../firebase/personalize.js";
+
+  init();
+  personalize();
+</script>
+
+<script src="https://js.puter.com/v2/"></script>
+
+<!-- SISTEMA DE TOKENS -->
+<script type="module">
+  import { onUser } from "../firebase/auth.js";
+  import { getUserTokens } from "../firebase/tokens.js";
+
+  const tokenBadge = document.getElementById("tokenBadge");
+  const tokenCounter = document.getElementById("tokenCounter");
+  const tokenPlanLabel = document.getElementById("tokenPlanLabel");
+
+  function renderTokenUI() {
+    const info = getUserTokens();
+
+    if (!info) {
+      if (tokenBadge) {
+        tokenBadge.style.display = "none";
+      }
+
+      return;
+    }
+
+    if (tokenCounter) {
+      tokenCounter.innerHTML = info.unlimited
+        ? "<em>Ilimitado</em>"
+        : "<em>" +
+          info.remaining +
+          "</em> de " +
+          info.limit +
+          " usos";
+    }
+
+    if (tokenPlanLabel) {
+      tokenPlanLabel.textContent = info.planName;
+    }
+
+    if (tokenBadge) {
+      tokenBadge.classList.toggle(
+        "is-low",
+        !info.unlimited &&
+          info.remaining <= 1 &&
+          info.remaining > 0
+      );
+
+      tokenBadge.classList.toggle(
+        "is-empty",
+        !info.unlimited &&
+          info.remaining === 0
+      );
+    }
+  }
+
+  if (tokenBadge) {
+    tokenBadge.addEventListener("click", () => {
+      window.location.href = "../perfil/index.html";
+    });
+  }
+
+  window.addEventListener(
+    "vitruviano:tokens",
+    renderTokenUI
+  );
+
+  window.addEventListener(
+    "vitruviano:plan",
+    renderTokenUI
+  );
+
+  onUser(renderTokenUI);
+
+  renderTokenUI();
+</script>
+```
+
+  </body>
+</html>

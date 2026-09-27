@@ -1,0 +1,660 @@
+<!doctype html>
+<html lang="pt-BR" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#fdfaf3" />
+    <title>Assinar · VITRUVIANO</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="../firebase/auth.css" />
+    <link rel="stylesheet" href="assinar.css" />
+  </head>
+  <body class="page-assinar">
+
+    <header class="checkout-header">
+      <a class="checkout-header__brand" href="../index.html">
+        <img src="../img/logo.png" alt="" width="38" height="38" />
+        <span>VITRUVIANO</span>
+      </a>
+      <div class="checkout-header__steps">
+        <div class="checkout-step is-active" data-step="1">
+          <span>1</span> Escolher plano
+        </div>
+        <div class="checkout-step__line"></div>
+        <div class="checkout-step" data-step="2">
+          <span>2</span> Pagamento
+        </div>
+        <div class="checkout-step__line"></div>
+        <div class="checkout-step" data-step="3">
+          <span>3</span> Pronto
+        </div>
+      </div>
+      <a class="checkout-header__back" href="../premium/index.html">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Voltar
+      </a>
+    </header>
+
+    <main class="checkout">
+      <!-- ============================================================
+           PASSO 1 — ESCOLHER PLANO
+           ============================================================ -->
+      <section class="checkout-step-view is-active" data-view="1">
+        <div class="checkout__inner">
+          <header class="checkout__head">
+            <p class="checkout__kicker">Assinatura VITRUVIANO</p>
+            <h1>Escolha o seu <em>plano.</em></h1>
+            <p class="checkout__lead">Cancele quando quiser. Sem fidelidade, sem multa.</p>
+          </header>
+
+          <div class="plan-picker">
+            <!-- STANDART -->
+            <article class="plan-option" data-plan="Standart" data-price="0">
+              <div class="plan-option__head">
+                <span class="plan-option__badge">Grátis para sempre</span>
+                <h3>Standart</h3>
+                <div class="plan-option__price">
+                  <strong>R$ 0</strong>
+                  <span>/mês</span>
+                </div>
+                <p class="plan-option__desc">Pra começar a explorar o VITRUVIANO sem compromisso.</p>
+              </div>
+
+              <div class="plan-option__tokens">
+                <span class="plan-option__tokens-icon">◆</span>
+                <div>
+                  <strong>3 usos por mês</strong>
+                  <small>Memorial, planejamento ou PDF</small>
+                </div>
+              </div>
+
+              <ul class="plan-option__features">
+                <li>5 projetos ativos</li>
+                <li>20 memoriais com IA / mês</li>
+                <li>Planejamento com IA</li>
+                <li>Biblioteca completa</li>
+                <li>Comunidade aberta</li>
+              </ul>
+
+              <button class="plan-option__cta plan-option__cta--ghost" data-select="Standart" type="button">
+                Começar grátis
+              </button>
+            </article>
+
+            <!-- MÉDIO -->
+            <article class="plan-option plan-option--featured" data-plan="Médio" data-price="19">
+              <span class="plan-option__ribbon">Recomendado</span>
+              <div class="plan-option__head">
+                <span class="plan-option__badge plan-option__badge--primary">Mais escolhido</span>
+                <h3>Médio</h3>
+                <div class="plan-option__price">
+                  <strong>R$ 19</strong>
+                  <span>/mês</span>
+                </div>
+                <p class="plan-option__desc">Pra profissionais que já têm volume recorrente.</p>
+              </div>
+
+              <div class="plan-option__tokens plan-option__tokens--featured">
+                <span class="plan-option__tokens-icon">◆</span>
+                <div>
+                  <strong>50 usos por mês</strong>
+                  <small>16x mais que o Standart</small>
+                </div>
+              </div>
+
+              <ul class="plan-option__features">
+                <li>Tudo do Standart, mais:</li>
+                <li>25 projetos ativos</li>
+                <li>100 memoriais com IA / mês</li>
+                <li>Propostas comerciais</li>
+                <li>Cronograma automático</li>
+                <li>Suporte prioritário</li>
+              </ul>
+
+              <button class="plan-option__cta plan-option__cta--primary" data-select="Médio" type="button">
+                Assinar Médio
+              </button>
+            </article>
+
+            <!-- ESCRITÓRIO -->
+            <article class="plan-option" data-plan="Escritório" data-price="59">
+              <div class="plan-option__head">
+                <span class="plan-option__badge">Pra escritórios</span>
+                <h3>Escritório</h3>
+                <div class="plan-option__price">
+                  <strong>R$ 59</strong>
+                  <span>/mês</span>
+                </div>
+                <p class="plan-option__desc">Pra quem precisa de escala e múltiplos arquitetos.</p>
+              </div>
+
+              <div class="plan-option__tokens">
+                <span class="plan-option__tokens-icon">◆</span>
+                <div>
+                  <strong>Uso ilimitado</strong>
+                  <small>Sem limites de tokens</small>
+                </div>
+              </div>
+
+              <ul class="plan-option__features">
+                <li>Tudo do Médio, mais:</li>
+                <li>Projetos ilimitados</li>
+                <li>Memoriais ilimitados</li>
+                <li>Multi-usuário</li>
+                <li>API + SSO</li>
+                <li>Gerente de conta</li>
+              </ul>
+
+              <button class="plan-option__cta plan-option__cta--ghost" data-select="Escritório" type="button">
+                Assinar Escritório
+              </button>
+            </article>
+          </div>
+
+          <div class="checkout__garantia">
+            <div class="checkout__garantia-item">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg>
+              Cancele quando quiser
+            </div>
+            <div class="checkout__garantia-item">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg>
+              Sem fidelidade
+            </div>
+            <div class="checkout__garantia-item">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg>
+              Nota fiscal automática
+            </div>
+            <div class="checkout__garantia-item">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg>
+              LGPD compliant
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================
+           PASSO 2 — PAGAMENTO
+           ============================================================ -->
+      <section class="checkout-step-view" data-view="2">
+        <div class="checkout__inner checkout__inner--payment">
+
+          <!-- Resumo do pedido -->
+          <aside class="order-summary">
+            <div class="order-summary__head">
+              <h3>Resumo do pedido</h3>
+              <button type="button" class="order-summary__edit" id="editPlanBtn">Editar</button>
+            </div>
+
+            <div class="order-summary__plan">
+              <div class="order-summary__plan-icon">◆</div>
+              <div class="order-summary__plan-info">
+                <strong id="summaryPlanName">Plano Médio</strong>
+                <small id="summaryPlanTokens">50 usos por mês</small>
+              </div>
+            </div>
+
+            <div class="order-summary__row">
+              <span>Plano mensal</span>
+              <strong id="summaryPrice">R$ 19,00</strong>
+            </div>
+            <div class="order-summary__row">
+              <span>Impostos</span>
+              <strong>Inclusos</strong>
+            </div>
+
+            <div class="order-summary__total">
+              <span>Total hoje</span>
+              <strong id="summaryTotal">R$ 19,00</strong>
+            </div>
+
+            <div class="order-summary__info">
+              <div class="order-summary__info-row">
+                <span>Próxima cobrança</span>
+                <strong id="summaryNextDate">—</strong>
+              </div>
+              <div class="order-summary__info-row">
+                <span>Renovação</span>
+                <strong>Automática</strong>
+              </div>
+            </div>
+          </aside>
+
+          <!-- Formulário de pagamento -->
+          <div class="payment">
+            <header class="payment__head">
+              <h2>Forma de pagamento</h2>
+              <p>Escolha como quer pagar a sua assinatura.</p>
+            </header>
+
+            <!-- Tabs de método -->
+            <div class="payment__methods">
+              <button class="payment__method is-active" data-method="card" type="button">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
+                Cartão
+              </button>
+              <button class="payment__method" data-method="pix" type="button">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l10 10-10 10L2 12z"/></svg>
+                PIX
+              </button>
+              <button class="payment__method" data-method="boleto" type="button">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5v14M8 5v14M12 5v14M16 5v14M20 5v14"/></svg>
+                Boleto
+              </button>
+            </div>
+
+            <form class="payment__form" id="paymentForm" autocomplete="on" novalidate>
+
+              <!-- Dados do titular -->
+              <fieldset class="payment__group">
+                <legend>Dados do titular</legend>
+
+                <label class="pay-field">
+                  <span>Nome completo</span>
+                  <input type="text" id="payName" required autocomplete="name" placeholder="Como no cartão" />
+                </label>
+
+                <div class="pay-field-grid">
+                  <label class="pay-field">
+                    <span>E-mail</span>
+                    <input type="email" id="payEmail" required autocomplete="email" placeholder="voce@email.com" />
+                  </label>
+                  <label class="pay-field">
+                    <span>CPF</span>
+                    <input type="text" id="payCPF" required inputmode="numeric" placeholder="000.000.000-00" />
+                  </label>
+                </div>
+              </fieldset>
+
+              <!-- Cartão -->
+              <fieldset class="payment__group payment__group--card">
+                <legend>Dados do cartão</legend>
+
+                <label class="pay-field">
+                  <span>Número do cartão</span>
+                  <input type="text" id="payCard" required inputmode="numeric" placeholder="0000 0000 0000 0000" maxlength="19" />
+                </label>
+
+                <label class="pay-field">
+                  <span>Nome impresso no cartão</span>
+                  <input type="text" id="payCardName" required placeholder="Como aparece no cartão" />
+                </label>
+
+                <div class="pay-field-grid-3">
+                  <label class="pay-field">
+                    <span>Validade</span>
+                    <input type="text" id="payExpiry" required inputmode="numeric" placeholder="MM/AA" maxlength="5" />
+                  </label>
+                  <label class="pay-field">
+                    <span>CVV</span>
+                    <input type="text" id="payCVV" required inputmode="numeric" placeholder="000" maxlength="4" />
+                  </label>
+                  <label class="pay-field">
+                    <span>Parcelas</span>
+                    <select id="payInstallments">
+                      <option value="1">1x sem juros</option>
+                      <option value="2">2x sem juros</option>
+                      <option value="3">3x sem juros</option>
+                      <option value="6">6x sem juros</option>
+                      <option value="12">12x sem juros</option>
+                    </select>
+                  </label>
+                </div>
+              </fieldset>
+
+              <!-- PIX -->
+              <div class="payment__pix" id="pixContent" hidden>
+                <div class="payment__pix-info">
+                  <span class="payment__pix-icon">◉</span>
+                  <div>
+                    <strong>Pagamento instantâneo via PIX</strong>
+                    <p>Ao confirmar, geramos um QR Code válido por 30 minutos. A ativação é imediata após o pagamento.</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Boleto -->
+              <div class="payment__boleto" id="boletoContent" hidden>
+                <div class="payment__pix-info">
+                  <span class="payment__pix-icon">▤</span>
+                  <div>
+                    <strong>Boleto bancário</strong>
+                    <p>O boleto vence em 3 dias úteis. A ativação acontece em até 2 dias após o pagamento.</p>
+                  </div>
+                </div>
+              </div>
+
+              <label class="pay-check">
+                <input type="checkbox" id="payTerms" required />
+                <span>Li e concordo com os <a href="#">termos de uso</a> e a <a href="#">política de privacidade</a>.</span>
+              </label>
+
+              <p class="payment__status" id="paymentStatus" role="status" aria-live="polite"></p>
+
+              <button class="payment__submit" id="paySubmit" type="submit">
+                <span class="payment__submit-lock">🔒</span>
+                <span id="paySubmitLabel">Pagar R$ 19,00</span>
+              </button>
+
+              <div class="payment__security">
+                <span>Pagamento seguro</span>
+                <div class="payment__security-badges">
+                  <span>🔒 SSL</span>
+                  <span>✓ PCI DSS</span>
+                  <span>◆ VITRUVIANO</span>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================
+           PASSO 3 — SUCESSO
+           ============================================================ -->
+      <section class="checkout-step-view" data-view="3">
+        <div class="checkout__success">
+          <div class="checkout__success-icon">
+            <svg viewBox="0 0 24 24" width="52" height="52" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg>
+          </div>
+
+          <h1>Bem-vindo ao <em id="successPlanName">Médio.</em></h1>
+          <p>Seu plano já está ativo. Você tem <strong id="successTokens">50 usos por mês</strong> a partir de agora.</p>
+
+          <div class="checkout__success-card">
+            <div class="checkout__success-row">
+              <span>Plano</span>
+              <strong id="successPlan">Médio</strong>
+            </div>
+            <div class="checkout__success-row">
+              <span>Tokens mensais</span>
+              <strong id="successTokensValue">50</strong>
+            </div>
+            <div class="checkout__success-row">
+              <span>Valor</span>
+              <strong id="successPrice">R$ 19,00</strong>
+            </div>
+            <div class="checkout__success-row">
+              <span>Próxima cobrança</span>
+              <strong id="successNextDate">—</strong>
+            </div>
+          </div>
+
+          <div class="checkout__success-actions">
+            <a class="btn btn--primary" href="../ia/index.html">
+              Começar a usar agora
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </a>
+            <a class="btn btn--ghost" href="../perfil/index.html">Ver meu perfil</a>
+          </div>
+
+          <p class="checkout__success-note">
+            Enviamos o comprovante para <strong id="successEmail">seu email</strong>.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <script type="module">
+      import { onUser } from "../firebase/auth.js";
+      import { init } from "../firebase/auth-ui.js";
+
+      init();
+
+      /* ============================================================
+         ESTADO
+         ============================================================ */
+      const PLAN_INFO = {
+        "Standart":    { price: 0,  tokens: "3 usos/mês",  tokensValue: 3 },
+        "Médio":       { price: 19, tokens: "50 usos/mês", tokensValue: 50 },
+        "Escritório":  { price: 59, tokens: "Uso ilimitado", tokensValue: -1 }
+      };
+
+      const state = {
+        plan: null,
+        method: "card"
+      };
+
+      const $ = (s) => document.querySelector(s);
+      const $$ = (s) => [...document.querySelectorAll(s)];
+
+      /* ============================================================
+         TEMA
+         ============================================================ */
+      (function () {
+        const root = document.documentElement;
+        let t;
+        try { t = localStorage.getItem("vitruviano:theme"); } catch {}
+        if (!t) t = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        root.setAttribute("data-theme", t);
+      })();
+
+      /* ============================================================
+         NAVEGAÇÃO ENTRE PASSOS
+         ============================================================ */
+      function goToStep(step) {
+        $$(".checkout-step-view").forEach((v) => {
+          v.classList.toggle("is-active", v.dataset.view === String(step));
+        });
+        $$(".checkout-step").forEach((s) => {
+          const n = parseInt(s.dataset.step, 10);
+          s.classList.toggle("is-active", n === step);
+          s.classList.toggle("is-done", n < step);
+        });
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+
+      /* ============================================================
+         PASSO 1 — ESCOLHER PLANO
+         ============================================================ */
+      $$("[data-select]").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const planName = btn.dataset.select;
+          state.plan = planName;
+
+          // Standart é grátis — ativa direto
+          if (planName === "Standart") {
+            ativarPlano(planName);
+            return;
+          }
+
+          // Pago — atualiza resumo e vai pro passo 2
+          const info = PLAN_INFO[planName];
+          $("#summaryPlanName").textContent = "Plano " + planName;
+          $("#summaryPlanTokens").textContent = info.tokens;
+          $("#summaryPrice").textContent = "R$ " + info.price.toFixed(2).replace(".", ",");
+          $("#summaryTotal").textContent = "R$ " + info.price.toFixed(2).replace(".", ",");
+          $("#paySubmitLabel").textContent = "Pagar R$ " + info.price.toFixed(2).replace(".", ",");
+
+          // Data da próxima cobrança
+          const next = new Date();
+          next.setMonth(next.getMonth() + 1);
+          const nextStr = next.toLocaleDateString("pt-BR", { day: "2-digit", month: "long", year: "numeric" });
+          $("#summaryNextDate").textContent = nextStr;
+
+          goToStep(2);
+        });
+      });
+
+      $("#editPlanBtn").addEventListener("click", () => goToStep(1));
+
+      /* ============================================================
+         PASSO 2 — MÉTODOS DE PAGAMENTO
+         ============================================================ */
+      $$(".payment__method").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const method = btn.dataset.method;
+          state.method = method;
+
+          $$(".payment__method").forEach((b) => b.classList.toggle("is-active", b === btn));
+
+          const cardGroup = $(".payment__group--card");
+          const pixContent = $("#pixContent");
+          const boletoContent = $("#boletoContent");
+
+          cardGroup.hidden = method !== "card";
+          pixContent.hidden = method !== "pix";
+          boletoContent.hidden = method !== "boleto";
+
+          // Atualiza label do botão
+          const info = PLAN_INFO[state.plan] || PLAN_INFO["Médio"];
+          const value = "R$ " + info.price.toFixed(2).replace(".", ",");
+          $("#paySubmitLabel").textContent = method === "pix" ? "Gerar QR Code PIX" : method === "boleto" ? "Gerar boleto" : "Pagar " + value;
+        });
+      });
+
+      /* ============================================================
+         MÁSCARAS DE INPUT
+         ============================================================ */
+      function maskCPF(v) {
+        return v.replace(/\D/g, "")
+          .replace(/(\d{3})(\d)/, "$1.$2")
+          .replace(/(\d{3})(\d)/, "$1.$2")
+          .replace(/(\d{3})(\d{1,2})$/, "$1-$2")
+          .slice(0, 14);
+      }
+      function maskCard(v) {
+        return v.replace(/\D/g, "")
+          .replace(/(\d{4})(?=\d)/g, "$1 ")
+          .slice(0, 19);
+      }
+      function maskExpiry(v) {
+        return v.replace(/\D/g, "")
+          .replace(/(\d{2})(\d)/, "$1/$2")
+          .slice(0, 5);
+      }
+
+      $("#payCPF")?.addEventListener("input", (e) => { e.target.value = maskCPF(e.target.value); });
+      $("#payCard")?.addEventListener("input", (e) => { e.target.value = maskCard(e.target.value); });
+      $("#payExpiry")?.addEventListener("input", (e) => { e.target.value = maskExpiry(e.target.value); });
+      $("#payCVV")?.addEventListener("input", (e) => { e.target.value = e.target.value.replace(/\D/g, "").slice(0, 4); });
+
+      /* ============================================================
+         PREENCHER AUTOMATICAMENTE COM DADOS DO USUÁRIO
+         ============================================================ */
+      onUser((user) => {
+        if (!user) return;
+        if ($("#payEmail") && !$("#payEmail").value) $("#payEmail").value = user.email;
+        if ($("#payName") && !$("#payName").value) $("#payName").value = user.displayName || "";
+      });
+
+      /* ============================================================
+         SUBMIT DO PAGAMENTO
+         ============================================================ */
+      $("#paymentForm").addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        const status = $("#paymentStatus");
+        const submitBtn = $("#paySubmit");
+        const submitLabel = $("#paySubmitLabel");
+
+        // Valida
+        const terms = $("#payTerms").checked;
+        if (!terms) {
+          status.textContent = "Aceite os termos para continuar.";
+          status.className = "payment__status is-error";
+          return;
+        }
+
+        if (state.method === "card") {
+          const card = $("#payCard").value.replace(/\s/g, "");
+          if (card.length < 13) {
+            status.textContent = "Número do cartão inválido.";
+            status.className = "payment__status is-error";
+            return;
+          }
+        }
+
+        const originalLabel = submitLabel.textContent;
+        submitBtn.disabled = true;
+        submitLabel.textContent = "Processando...";
+        status.textContent = "";
+        status.className = "payment__status";
+
+        // Simula processamento (2s)
+        await new Promise((r) => setTimeout(r, 2000));
+
+        // Ativa o plano
+        ativarPlano(state.plan);
+      });
+
+      /* ============================================================
+         ATIVAR PLANO
+         ============================================================ */
+      function ativarPlano(planName) {
+        const uid = window.__currentUser?.uid;
+        if (!uid) {
+          window.location.href = "../index.html";
+          return;
+        }
+
+        const info = PLAN_INFO[planName];
+        const colors = { "Standart": "sun", "Médio": "caramel", "Escritório": "fire" };
+
+        // Salva plano
+        try {
+          const data = JSON.parse(localStorage.getItem("vitruviano:plan") || "{}");
+          data[uid] = {
+            name: planName,
+            label: "Plano " + planName,
+            color: colors[planName],
+            price: info.price,
+            since: Date.now()
+          };
+          localStorage.setItem("vitruviano:plan", JSON.stringify(data));
+        } catch (e) {}
+
+        // Reseta tokens pro novo plano
+        try {
+          const tokens = JSON.parse(localStorage.getItem("vitruviano:tokens") || "{}");
+          const LIMITS = { "Standart": 3, "Médio": 50, "Escritório": -1 };
+          tokens[uid] = {
+            plan: planName,
+            used: 0,
+            limit: LIMITS[planName],
+            resetAt: Date.now() + 30 * 24 * 60 * 60 * 1000
+          };
+          localStorage.setItem("vitruviano:tokens", JSON.stringify(tokens));
+        } catch (e) {}
+
+        // Salva comprovante
+        try {
+          const receipts = JSON.parse(localStorage.getItem("vitruviano:receipts") || "{}");
+          if (!receipts[uid]) receipts[uid] = [];
+          receipts[uid].push({
+            id: "rcpt-" + Date.now(),
+            plan: planName,
+            price: info.price,
+            method: state.method,
+            createdAt: Date.now()
+          });
+          localStorage.setItem("vitruviano:receipts", JSON.stringify(receipts));
+        } catch (e) {}
+
+        // Notifica sistema global
+        window.dispatchEvent(new CustomEvent("vitruviano:plan"));
+        window.dispatchEvent(new CustomEvent("vitruviano:tokens"));
+
+        // Passo 3
+        $("#successPlanName").textContent = planName + ".";
+        $("#successPlan").textContent = planName;
+        $("#successTokens").textContent = info.tokens;
+        $("#successTokensValue").textContent = info.tokensValue === -1 ? "Ilimitado" : info.tokensValue;
+        $("#successPrice").textContent = info.price === 0 ? "Grátis" : "R$ " + info.price.toFixed(2).replace(".", ",");
+
+        const next = new Date();
+        next.setMonth(next.getMonth() + 1);
+        $("#successNextDate").textContent = info.price === 0
+          ? "— (plano gratuito)"
+          : next.toLocaleDateString("pt-BR", { day: "2-digit", month: "long", year: "numeric" });
+
+        const user = window.__currentUser;
+        if (user?.email) $("#successEmail").textContent = user.email;
+
+        goToStep(3);
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="pt-BR" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#fdfaf3" />
+    <title>Comunidade · VITRUVIANO</title>
+    <meta name="description" content="A rede dos arquitetos brasileiros. Compartilhe projetos, dúvidas, referências e participe de desafios semanais." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="../firebase/auth.css" />
+    <link rel="stylesheet" href="blog.css" />
+  </head>
+  <body class="page-blog">
+    <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+    <header class="site-header">
+      <a class="brand" href="../index.html">
+        <img src="../img/logo.png" alt="" width="42" height="42" />
+        <span>VITRUVIANO</span>
+      </a>
+      <nav class="site-nav" id="site-nav">
+        <a href="../projetos/index.html">Projetos</a>
+        <a href="../ia/index.html">Memorial IA</a>
+        <a href="../premium/index.html">Planos</a>
+        <a href="index.html" class="is-current">Comunidade</a>
+      </nav>
+      <div class="nav-actions">
+        <button class="theme-toggle" type="button" aria-label="Alternar tema">
+          <svg viewBox="0 0 24 24" width="17" height="17"><circle cx="12" cy="12" r="4" fill="currentColor"/><g stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></g></svg>
+        </button>
+        <div class="auth-user" id="authContainer"></div>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-label="Abrir menu">
+          <span></span><span></span>
+        </button>
+      </div>
+    </header>
+
+    <!-- HERO DA COMUNIDADE -->
+    <section class="comm-hero">
+      <div class="comm-hero__bg">
+        <div class="comm-hero__grid"></div>
+        <div class="comm-hero__glow comm-hero__glow--1"></div>
+        <div class="comm-hero__glow comm-hero__glow--2"></div>
+      </div>
+      <div class="comm-hero__inner">
+        <p class="comm-hero__kicker">Comunidade · VITRUVIANO</p>
+        <h1>Onde arquitetos <em>se encontram.</em></h1>
+        <p class="comm-hero__lead">
+          Compartilhe projetos, tire dúvidas, participe de desafios semanais e construa
+          seu portfólio junto com outros profissionais.
+        </p>
+        <div class="comm-hero__stats">
+          <div><strong id="statMembros">2.847</strong><span>membros ativos</span></div>
+          <div><strong id="statPosts">1.293</strong><span>posts compartilhados</span></div>
+          <div><strong>48</strong><span>desafios concluídos</span></div>
+          <div><strong>92%</strong><span>respondem em 24h</span></div>
+        </div>
+      </div>
+    </section>
+
+    <main id="conteudo" class="community">
+      <div class="community__inner">
+
+        <!-- ============ COLUNA ESQUERDA — SIDEBAR ============ -->
+        <aside class="community__sidebar community__sidebar--left">
+
+          <!-- Perfil do usuário -->
+          <div class="side-card side-card--profile" data-auth-only>
+            <div class="side-card__avatar" data-user-avatar-fallback>?</div>
+            <strong data-user-name>Você</strong>
+            <small data-user-plan>Plano Solo</small>
+            <div class="side-card__stats">
+              <div><strong data-user-stat="posts">0</strong><span>posts</span></div>
+              <div><strong data-user-stat="curtidas">0</strong><span>curtidas</span></div>
+              <div><strong>0</strong><span>seguindo</span></div>
+            </div>
+            <a class="side-card__btn" href="../perfil/index.html">Ver meu perfil</a>
+          </div>
+
+          <!-- Navegação do feed -->
+          <nav class="side-card side-card--nav">
+            <button class="side-nav is-active" data-feed="recentes">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h12" stroke-linecap="round"/></svg>
+              Recentes
+            </button>
+            <button class="side-nav" data-feed="populares">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke-linejoin="round"/></svg>
+              Populares
+            </button>
+            <button class="side-nav" data-feed="seguindo">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke-linecap="round"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" stroke-linecap="round"/></svg>
+              Seguindo
+            </button>
+            <button class="side-nav" data-feed="salvos">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z" stroke-linejoin="round"/></svg>
+              Salvos
+            </button>
+          </nav>
+
+          <!-- Desafio da semana -->
+          <div class="side-card side-card--challenge">
+            <div class="side-card__badge">🏆 Desafio da semana</div>
+            <h3>Projete com <em>madeira.</em></h3>
+            <p>Compartilhe um projeto seu que use madeira como material principal. Os 3 melhores ganham destaque.</p>
+            <div class="side-card__progress">
+              <div class="side-card__progress-bar"><span style="width: 68%"></span></div>
+              <small>27 de 40 participantes</small>
+            </div>
+            <button class="side-card__btn side-card__btn--primary" id="challengeBtn">
+              Participar do desafio
+            </button>
+          </div>
+
+          <!-- Trend topics -->
+          <div class="side-card">
+            <h3 class="side-card__title">Assuntos em alta</h3>
+            <div class="trend-list" id="trendList"></div>
+          </div>
+
+        </aside>
+
+        <!-- ============ COLUNA CENTRAL — FEED ============ -->
+        <div class="community__main">
+
+          <!-- Composer -->
+          <form class="composer" id="composer" autocomplete="off">
+            <div class="composer__top">
+              <div class="composer__avatar" data-user-avatar-fallback>?</div>
+              <div class="composer__field">
+                <textarea
+                  id="composerText"
+                  rows="1"
+                  placeholder="Compartilhe um projeto, dúvida ou referência... o que você está construindo?"
+                  aria-label="Escreva seu post"
+                ></textarea>
+              </div>
+            </div>
+
+            <div class="composer__preview" id="composerPreview"></div>
+            <div class="composer__tags" id="composerTags"></div>
+
+            <div class="composer__quick-prompts" id="quickPrompts">
+              <span class="composer__qp-label">Sugestões:</span>
+              <button type="button" data-prompt="Terminei um projeto e quero mostrar: ">Mostrar projeto</button>
+              <button type="button" data-prompt="Estou com uma dúvida sobre ">Fazer pergunta</button>
+              <button type="button" data-prompt="Encontrei essa referência incrível: ">Compartilhar referência</button>
+              <button type="button" data-prompt="Alguém já usou [material]? O que achou?">Pedir opinião</button>
+            </div>
+
+            <div class="tag-picker" id="tagPicker" role="group" aria-label="Escolher tags">
+              <button type="button" data-tag="Projeto">Projeto</button>
+              <button type="button" data-tag="Materiais">Materiais</button>
+              <button type="button" data-tag="IA">IA</button>
+              <button type="button" data-tag="Bioclimático">Bioclimático</button>
+              <button type="button" data-tag="Reforma">Reforma</button>
+              <button type="button" data-tag="Interiores">Interiores</button>
+              <button type="button" data-tag="Dúvida">Dúvida</button>
+              <button type="button" data-tag="Referência">Referência</button>
+              <button type="button" data-tag="Obra">Obra</button>
+              <button type="button" data-tag="Software">Software</button>
+              <button type="button" data-tag="Carreira">Carreira</button>
+              <button type="button" data-tag="Desafio">Desafio</button>
+            </div>
+
+            <div class="composer__foot">
+              <div class="composer__tools">
+                <label class="composer__tool" for="composerFiles">
+                  <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  Imagem
+                  <input type="file" id="composerFiles" accept="image/*" multiple hidden />
+                </label>
+                <button type="button" class="composer__tool" id="tagToggle">
+                  <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z" stroke-linejoin="round"/><circle cx="7" cy="7" r="1.2" fill="currentColor"/></svg>
+                  Tags <span id="tagCount"></span>
+                </button>
+              </div>
+
+              <button type="submit" class="composer__submit" id="composerSubmit" disabled>
+                Publicar
+                <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+              </button>
+            </div>
+          </form>
+
+          <!-- Filtro de posts -->
+          <div class="feed-tabs" role="tablist">
+            <button class="feed-tab is-active" data-feed="recentes" type="button">Recentes</button>
+            <button class="feed-tab" data-feed="populares" type="button">Populares</button>
+            <button class="feed-tab" data-feed="seguindo" type="button">Seguindo</button>
+            <button class="feed-tab" data-feed="salvos" type="button">Salvos</button>
+          </div>
+
+          <!-- Feed -->
+          <div class="feed" id="feed" aria-live="polite"></div>
+
+        </div>
+
+        <!-- ============ COLUNA DIREITA — SIDEBAR ============ -->
+        <aside class="community__sidebar community__sidebar--right">
+
+          <!-- Ranking -->
+          <div class="side-card">
+            <h3 class="side-card__title">
+              <span class="side-card__icon">🏅</span>
+              Ranking da semana
+            </h3>
+            <div class="ranking" id="ranking"></div>
+          </div>
+
+          <!-- Pessoas para seguir -->
+          <div class="side-card">
+            <h3 class="side-card__title">
+              <span class="side-card__icon">✨</span>
+              Sugestões para seguir
+            </h3>
+            <div class="people-list" id="peopleList"></div>
+          </div>
+
+          <!-- Ferramenta gratuita -->
+          <div class="side-card side-card--cta">
+            <div class="side-card__badge side-card__badge--fire">Ferramenta grátis</div>
+            <h3>Gere um memorial em 2 minutos.</h3>
+            <p>NBR 13531 completo com IA, sem pagar nada.</p>
+            <a class="side-card__btn side-card__btn--dark" href="../ia/index.html">
+              Abrir Memorial IA ↗
+            </a>
+          </div>
+
+        </aside>
+      </div>
+    </main>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true">
+      <button class="lightbox__close" type="button" aria-label="Fechar">×</button>
+      <img src="" alt="" id="lightboxImg" />
+      <div class="lightbox__info" id="lightboxInfo"></div>
+    </div>
+
+    <!-- Modal de compartilhar -->
+    <div class="share-modal" id="shareModal" role="dialog" aria-modal="true">
+      <div class="share-modal__card">
+        <header class="share-modal__head">
+          <h3>Compartilhar post</h3>
+          <button type="button" class="share-modal__close" id="shareClose">×</button>
+        </header>
+        <div class="share-modal__body">
+          <input type="text" readonly id="shareUrl" />
+          <button class="btn btn--primary" id="copyShareUrl">Copiar link</button>
+        </div>
+      </div>
+    </div>
+
+    <footer class="site-footer">
+      <div class="footer-main">
+        <a class="brand" href="../index.html">
+          <img src="../img/logo.png" alt="" width="42" height="42" />
+          <span>VITRUVIANO</span>
+        </a>
+        <p>Arquitetura, inteligência e prática.</p>
+        <a class="footer-cta" href="../ia/index.html">Gerar memorial ↗</a>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2025 VITRUVIANO</span>
+        <span>Brasil · São Paulo</span>
+      </div>
+    </footer>
+
+    <script src="blog.js" defer></script>
+    <script type="module">
+      import { init } from "../firebase/auth-ui.js";
+      import { personalize } from "../firebase/personalize.js";
+      init();
+      personalize();
+    </script>
+  </body>
+</html>
